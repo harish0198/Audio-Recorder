@@ -1,12 +1,8 @@
 import multiprocessing
 import pyaudio
 import numpy as np
-import pylab
 import matplotlib.pyplot as plt
-from scipy.io import wavfile
 import time
-import sys
-import seaborn as sns
 import wave
 import time
 
@@ -113,9 +109,3 @@ def playback():
         # writing to the stream is what *actually* plays the sound.
         stream.write(data)
         data = wf.readframes(CHUNK)
-
-
-    # cleanup stuff.
-    wf.close()
-    stream.close()    
-    audio.terminate()
