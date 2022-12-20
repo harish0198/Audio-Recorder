@@ -20,20 +20,22 @@ def Settime():
 def plybk():
     lbl.config(text = "Playing Recorded audio")
     
-# TextBox Creation
-inputtxt = tk.Text(frame,height = 1,width = 10)
+if __name__ == '__main__':     
 
-# Button Creation
-settimebt = tk.Button(frame,text = "Set time",command = Settime)
-recordbt = tk.Button(frame,text = "Record",command = lambda:record(rec_tim))
-plybkbt = tk.Button(frame,text = "Play back",command = playback)
+    # TextBox Creation
+    inputtxt = tk.Text(frame,height = 1,width = 10)
 
-# Label Creation
-lbl = tk.Label(frame, text = "")
+    # Button Creation
+    settimebt = tk.Button(frame,text = "Set time",command = Settime)
+    recordbt = tk.Button(frame,text = "Record",command = lambda:record(rec_tim))
+    plybkbt = tk.Button(frame,text = "Play back",command = playback)
 
-inputtxt.pack()
-settimebt.pack()
-recordbt.pack()
-plybkbt.pack()
-lbl.pack()
-frame.mainloop()
+    # Label Creation
+    lbl = tk.Label(frame, text = "")
+
+    inputtxt.pack()
+    settimebt.pack()
+    recordbt.pack()
+    plybkbt.pack()
+    lbl.pack()
+    frame.mainloop()

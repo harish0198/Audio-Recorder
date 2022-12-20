@@ -10,7 +10,6 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 CHUNK = 512
-# RECORD_SECONDS = 5
 WAVE_OUTPUT_FILENAME = "recordedFile.wav"
 device_index = 2
 audio = pyaudio.PyAudio() 
@@ -27,7 +26,6 @@ def ps1(index,RECORD_SECONDS):
     ax.set_xlim(0,550)
     ax.set_ylim(-5000,5000)
     ax.set_title("Raw Audio Signal")
-    # plt.pause(0.01)
     plt.tight_layout()
     stream = audio.open(format=FORMAT, channels=CHANNELS,
                     rate=RATE, input=True,input_device_index = index,
@@ -74,8 +72,8 @@ def record(rec_tim):
 
 
     # creating processes
-    p1 = multiprocessing.Process(target = ps1,args = (index,rec_tim,))
-    p2 = multiprocessing.Process(target = ps2,args = (index,rec_tim,))
+    p1 = multiprocessing.Process(target = ps1,args = (index,rec_tim))
+    p2 = multiprocessing.Process(target = ps2,args = (index,rec_tim))
 
     # starting process 1
     p1.start()
@@ -109,3 +107,8 @@ def playback():
         # writing to the stream is what *actually* plays the sound.
         stream.write(data)
         data = wf.readframes(CHUNK)
+        
+if __name__ == '__main__':     
+    RECORD_SECONDS = 5
+
+    record(RECORD_SECONDS)
